@@ -8,8 +8,8 @@ export default function FormValidator() {
   const validateFields = () => {
     if (!email || !password || !passwordConfirm) {
       return "All fields are required";
-    } else if (!email.includes("@")) {
-      return "Email must contain @";
+    } else if ([...email].filter((char) => char === "@").length !== 1) {
+      return "Email must contain 1 @";
     } else if (password.length < 8) {
       return "Password must be at least 8 characters";
     } else if (password !== passwordConfirm) {
